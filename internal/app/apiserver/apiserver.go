@@ -1,10 +1,10 @@
 package apiserver
 
 import (
-	"io"
-	"net/http"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
+	"io"
+	"net/http"
 )
 
 // APIServer ...
@@ -46,16 +46,14 @@ func (s *APIServer) configureLogger() error {
 	return nil
 }
 
-
 // configureRouter
 func (s *APIServer) configureRouter() {
 	s.router.HandleFunc("/hello", s.handleHello())
 }
 
-
 // handleHello ...
 func (s *APIServer) handleHello() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello")
+		io.WriteString(w, "Welcome Go 1.18")
 	}
 }

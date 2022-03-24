@@ -1,9 +1,9 @@
-.PHONY: build
+.PHONY: all
 build:
-	go build -v ./cmd/apiserver
+	go build -v ./cmd/apiserver/main.go
 
-.PHONY: test
+run:
+	go run ./cmd/apiserver/main.go
+
 test:
 	go test -v -race -timeout 30s ./...
-
-.DEFAULT_GOAL := build
