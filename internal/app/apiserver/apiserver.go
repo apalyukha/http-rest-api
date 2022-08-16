@@ -1,6 +1,7 @@
 package apiserver
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"io"
@@ -54,6 +55,9 @@ func (s *APIServer) configureRouter() {
 // handleHello ...
 func (s *APIServer) handleHello() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Welcome Go 1.18")
+		_, err := io.WriteString(w, "Welcome Go 1.19")
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
