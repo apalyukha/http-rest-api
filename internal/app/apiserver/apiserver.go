@@ -2,10 +2,11 @@ package apiserver
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
-	"github.com/sirupsen/logrus"
 	"io"
 	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 )
 
 // APIServer ...
@@ -29,8 +30,8 @@ func (s *APIServer) Start() error {
 	if err := s.configureLogger(); err != nil {
 		return err
 	}
-	s.logger.Info("starting api server")
 
+	s.logger.Info("starting api server")
 	s.configureRouter()
 
 	return http.ListenAndServe(s.config.BindAddr, s.router)
@@ -47,14 +48,14 @@ func (s *APIServer) configureLogger() error {
 	return nil
 }
 
-// configureRouter
+// configureRouter ...
 func (s *APIServer) configureRouter() {
 	s.router.HandleFunc("/hello", s.handleHello())
 }
 
 // handleHello ...
 func (s *APIServer) handleHello() http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, _ *http.Request) {
 		_, err := io.WriteString(w, "Welcome Go 1.19")
 		if err != nil {
 			fmt.Println(err)
