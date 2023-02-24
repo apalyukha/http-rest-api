@@ -56,7 +56,7 @@ func (s *APIServer) configureRouter() {
 // handleHello ...
 func (s *APIServer) handleHello() http.HandlerFunc {
 	return func(w http.ResponseWriter, _ *http.Request) {
-		_, err := io.WriteString(w, "Welcome Go 1.19")
+		_, err := io.WriteString(w, "Welcome Go 1.20")
 		if err != nil {
 			fmt.Println(err)
 		}
