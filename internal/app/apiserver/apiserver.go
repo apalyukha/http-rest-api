@@ -2,9 +2,10 @@ package apiserver
 
 import (
 	"fmt"
-	"github.com/apalyukha/http-rest-api/internal/app/store"
 	"io"
 	"net/http"
+
+	"github.com/apalyukha/http-rest-api/internal/app/store"
 
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
