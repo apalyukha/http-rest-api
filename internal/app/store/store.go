@@ -2,13 +2,15 @@ package store
 
 import (
 	"database/sql"
+
 	_ "github.com/lib/pq"
 )
 
 // Store ...
 type Store struct {
-	config *Config
-	db     *sql.DB
+	config         *Config
+	db             *sql.DB
+	userRepository *UserRepository
 }
 
 // New ...
@@ -36,4 +38,17 @@ func (s *Store) Open() error {
 // Close ...
 func (s *Store) Close() {
 	s.db.Close()
+}
+
+// User ...
+func (s *Store) User() *UserRepository {
+	if s.userRepository != nil {
+		return s.userRepository
+	}
+
+	s.userRepository = &UserRepository{
+		store: s,
+	}
+
+	return s.userRepository
 }
